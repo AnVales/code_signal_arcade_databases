@@ -18,3 +18,11 @@ It's your duty now to warn the users that have these attributes about possible r
 
 Given the users table, compose the resulting table consisting only of the rows that contain affected users' info. 
 The result should be sorted by the attributes in ascending order.*/
+
+CREATE PROCEDURE solution()
+BEGIN
+	SELECT first_name, second_name, attribute 
+	FROM users
+	WHERE BINARY attribute LIKE  CONCAT('_%','\%',first_name, '\_',second_name,'\%', '%')
+	ORDER BY attribute ASC;
+END
